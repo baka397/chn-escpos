@@ -1,0 +1,28 @@
+{
+  "name": "chn-escpos",
+  "version": "1.0.0",
+  "description": "Chinese ESC/POS Printer driver for nodejs",
+  "main": "./lib/printer",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/baka397/chn-escpos.git"
+  },
+  "keywords": [
+    "print",
+    "chn"
+  ],
+  "author": "bakajinsei",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/baka397/chn-escpos/issues"
+  },
+  "homepage": "https://github.com/baka397/chn-escpos#readme",
+  "dependencies": {
+    "bufferhelper": "^0.2.1",
+    "iconv-lite": "^0.4.13",
+    "printer": "^0.2.1"
+  }
+}
