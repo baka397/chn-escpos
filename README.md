@@ -5,6 +5,9 @@ chn-escpos
 
 chn-escpos是一个nodejs的window POS机打印程序,使用`printer`的C组件与打印机通信,使用ESC/POS命令控制打印机
 
+### 更新日志
+2016-03-28 1.1.0 增加开钱箱命令,额外增加一个sendCmd命令,与开钱箱命令配合(print命令会额外发送一个切刀指令和初始化指令).与1.0.*的命令兼容
+
 ## 安装
 
 ```
@@ -19,8 +22,9 @@ npm test
 ```
 测试程序默认监听2520端口,你可以通过向`http://127.0.0.1:2520?action=print&printer=`POST raw数据进行打印测试(推荐使用POSTMAN进行测试)
 ```
+//发送打印指令
 POST  HTTP/1.1
-Host: 127.0.0.1:2520?action=print&printer=
+Host: 127.0.0.1:2520?action=print
 Content-Type: application/javascript
 Cache-Control: no-cache
 Postman-Token: 3ae7055f-8dd9-5386-3cfe-4355d7b7645a
@@ -31,6 +35,22 @@ Postman-Token: 3ae7055f-8dd9-5386-3cfe-4355d7b7645a
         "group_id": "1",//打印队列ID
         "printer": "XP-80C",//打印机别名
         "content": "<% setAlign:c %>测试居中"
+    }
+]
+
+//发送钱箱指令
+POST  HTTP/1.1
+Host: 127.0.0.1:2520?action=cmd
+Content-Type: application/javascript
+Cache-Control: no-cache
+Postman-Token: d04979f1-9e17-3647-90be-defa7430109d
+
+[
+    {
+        "id": "957",
+        "group_id": "322",
+        "printer": "XP-80C",
+        "content": "<% openCashbox:'' %>"
     }
 ]
 ```
@@ -100,4 +120,21 @@ this.print(function(err,msg){
 ###empty() 清空当前内容
 ```
 this.empty();
+```
+
+###openCashbox() 发送钱箱脉冲
+钱箱脉冲不能同打印命令一同发送(钱箱脉冲命令会执行但不会进行打印)  
+```
+this.openCashbox();
+```
+
+###sendCmd(callback) 发送打印指令
+function `callback`:回传err以及msg,当成功时,err为null  
+```
+this.sendCmd(function(err,msg){
+   if(err){
+    console.log('打印出错,回传信息:');
+   }
+   console.log(msg);
+});
 ```
