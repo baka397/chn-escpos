@@ -1,6 +1,6 @@
 {
   "name": "chn-escpos",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Chinese ESC/POS Printer driver for nodejs",
   "main": "./lib/printer",
   "scripts": {
