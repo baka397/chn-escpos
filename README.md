@@ -6,6 +6,7 @@ chn-escpos
 chn-escpos是一个nodejs的window POS机打印程序,使用`printer`的C组件与打印机通信,使用ESC/POS命令控制打印机
 
 ### 更新日志
+2016-04-22 1.1.3 修复一个打印二维码的BUG  
 2016-04-18 1.1.1 修改setSize方法,并修复setSize(1)还原样式错误的问题.增加beep(打印机蜂鸣),qrcode(打印二维码)功能.  
 2016-03-28 1.1.0 增加开钱箱命令,额外增加一个sendCmd命令,与开钱箱命令配合(print命令会额外发送一个切刀指令和初始化指令).与1.0.*的命令兼容 
 
@@ -101,7 +102,8 @@ number `size`:4/3/2/1/null,x代表x倍字体,1/null均为正常
 this.setSize(2).text('大字体');
 ```
 
-###qrcode(text,size,lsb,msb) 打印二维码,需要打印机支持QRCODE条码类型,否则会打印乱码
+###qrcode(text,size,lsb,msb) 打印二维码  
+需要打印机支持QRCODE条码类型,否则会打印乱码,只支持英文字符和URL特殊符号(:/?=&.)  
 string `text`:二维码内容  
 string `size`:二维码大小,默认'\x06'  
 string `lsb`:(text长度+3)%256转16进制后的字符,如'\x01'  
