@@ -115,6 +115,10 @@ this.qrcode(1,'\x0f','\x04','\x00');
 注:compile中16进制参数请使用\转义,如`<% qrcode:1,'\\x0f','\\x04','\\x00' %>` 
 
 ###beep(times,interval) 蜂鸣警报  
+注意:该蜂鸣警报在某些打印机会引起打印错误  
+目前测试  
+通过的打印机:芯烨打印机(XP 80C),佳博打印机(GP L80160, GP H80300)  
+不通过的打印机:有爱普生(EPSON TM81II)  
 string `times`:蜂鸣次数,16进制,1-9.默认'\x09'  
 string `interval`:蜂鸣间隔,16进制,实际间隔时间为interval*50ms,默认'\x01'  
 ```
