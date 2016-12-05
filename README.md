@@ -3,7 +3,7 @@ chn-escpos
 
 ## 介绍
 
-chn-escpos是一个nodejs的window POS机打印程序,使用`printer`的C组件与打印机通信,使用ESC/POS命令控制打印机
+chn-escpos是一个nodejs的window POS机打印程序,使用`printer`的C组件与打印机通信,使用ESC/POS命令控制打印机。该版本已停止维护。  
 
 ### 更新日志
 2016-04-25 1.1.4 修复[钱箱命令在部分打印机不能使用](https://github.com/baka397/chn-escpos/issues/1)的问题  
